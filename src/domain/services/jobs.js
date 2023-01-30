@@ -22,18 +22,13 @@ const getUnpaid = async (profileId) => {
 }
 
 const pay = async (profileId, jobId) => {
-    console.log('ENTRAS ACA LA CONCHA DE TU VIEJA?')
 
     try {
         return await sequelize.transaction(async (t) => {
-        console.log('adentro del transaction trolo')
 
             const options = {transaction: t, lock: t.LOCK.UPDATE}
 
             const job = await jobRepository.getJobById(jobId, options)
-
-            console.log('JOOOOB')
-            console.log()
 
             if (!job) {
                 console.log(`Job id ${jobId} not found`)

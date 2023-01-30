@@ -14,7 +14,6 @@ const getJobById = async(id, databaseTransactionConfig) => {
 }
 
 const pay = async(jobId, databaseTransactionConfig) => {
-    console.log('a ver el id:')
     console.log(jobId)
     return await  Job.update( { paid: true }, { where: { id: jobId }, returning: true, ...databaseTransactionConfig })
 }
